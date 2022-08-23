@@ -4,7 +4,7 @@ function App() {
   return (
     <GlobalStyles>
     <div className="App">
-     
+     <h1>React App</h1>
     </div>
     </GlobalStyles>
   );
