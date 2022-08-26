@@ -20,6 +20,7 @@ function Menu({children, items = [], onChange = defaultFn}) {
             const isParent = !!item.children /*Convert to boolean*/ ;
             return <MenuItem key={index} data={item} onClick={() => {
               if(isParent){
+                console.log(item);
                 setHistory(prev => [...prev, item.children])
               }else{
                 onChange(item)
@@ -45,6 +46,7 @@ function Menu({children, items = [], onChange = defaultFn}) {
                 </PopperWrapper>
               </div>
             )}
+            onHide={() => setHistory(prev => prev.slice(0,1))}
           >
             {children}
           </Tippy>
