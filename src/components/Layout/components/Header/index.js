@@ -5,12 +5,10 @@ import {
   faCircleXmark,
   faSpinner,
   faMagnifyingGlass,
-  faSignIn,
   faEllipsisVertical,
   faEarthAsia,
   faCircleQuestion,
   faKeyboard,
-  faCloudUpload,
   faUser,
   faCoins,
   faGear,
@@ -28,6 +26,8 @@ import styles from "./Header.module.scss";
 import images from "~/assets/images";
 import AccountItem from "~/components/AccountItem";
 import Menu from "~/components/Popper/Menu";
+import { InboxIcon, MessageIcon, UploadIcon } from "~/components/Icons";
+import Image from "~/components/Images";
 
 const cx = classNames.bind(styles);
 
@@ -147,15 +147,26 @@ function Header() {
 
         <div className={cx("actions")}>
         {currentUser ? (
+          <>
           <Tippy delay={[0, 200]} offset={[12, 8]} content="Upload Video" placement="bottom">
             <button className={cx('action-btn')}>
-              <FontAwesomeIcon icon={faCloudUpload}/>
+             <UploadIcon />
             </button>
-
-            {/* <button className={cx('action-btn')}>
-              <FontAwesomeIcon icon={faMessage}/>
-            </button> */}
           </Tippy>
+
+          <Tippy delay={[0, 200]} offset={[12, 8]} content="Message" placement="bottom">
+            <button className={cx('action-btn')}>
+             <MessageIcon />
+            </button>
+          </Tippy>
+
+          <Tippy delay={[0, 200]} offset={[12, 8]} content="Message" placement="bottom">
+            <button className={cx('action-btn')}>
+             <InboxIcon />
+            </button>
+          </Tippy>
+          </>
+          
         ) : (
           <React.Fragment>
             <Button text>Upload</Button>
@@ -165,7 +176,9 @@ function Header() {
 
             <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                 {currentUser ?  (
-                  <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROLshlLQkVsmMDuoYjkOPQy9Icop3a0nzX3w&usqp=CAU' className={cx('user-avatar')} alt='Dang Hoang Viet'/>
+                  <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROLshlLQkVsmMDuoYjkOPQy9Icop3a0nzX3w&usqp=CAu' className={cx('user-avatar')} alt='Dang Hoang Viet'
+                  fallback="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhsxo6Lu9D6ixWWKaB_j-S_JNRlD7v7xLBsA&usqp=CAU"
+                  />
                 ) : (
                   <>
                   <button className={cx("more-btn")}>
